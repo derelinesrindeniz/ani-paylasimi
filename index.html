@@ -51,10 +51,10 @@
             </button>
 
             <p id="selectedInfo"></p>
-            
-            <button class="galleryBtn">
+
+            <a href="#gallerySection" class="galleryBtn">
                 🩷 Galeriyi Gör
-            </button>
+            </a>
 
         </div>
 
@@ -62,6 +62,18 @@
 
     </div>
 
+    <section class="gallery-section" id="gallerySection">
+        <h2>Düğün Anılarımız</h2>
+
+        <p id="galleryStatus">
+            Fotoğraflar yükleniyor...
+        </p>
+
+        <div id="gallery" class="gallery"></div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
     <script src="script.js"></script>
 
 </body>
