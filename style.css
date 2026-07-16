@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #fffdfd, #fff3f7);
+    color: #7c5b65;
+    overflow-x: hidden;
+}
+
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.center {
+    text-align: center;
+    max-width: 650px;
+    margin: auto;
+    padding: 40px 25px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #f4d4de;
+    border-radius: 32px;
+    box-shadow: 0 20px 60px rgba(210, 144, 164, 0.18);
+}
+
+.center h3 {
+    font-size: 18px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #d28fa2;
+    margin-bottom: 20px;
+}
+
+.center h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: 78px;
+    font-weight: 400;
+    line-height: 1;
+    color: #d9829d;
+    margin-bottom: 20px;
+}
+
+.center h1 span {
+    font-size: 48px;
+    color: #e9a9ba;
+}
+
+.date {
+    display: inline-block;
+    padding: 10px 22px;
+    border-top: 1px solid #e7b2c1;
+    border-bottom: 1px solid #e7b2c1;
+    color: #bd7489;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-bottom: 26px;
+}
+
+.text {
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0 auto 28px;
+    max-width: 520px;
+    color: #80646c;
+}
+
+button {
+    border: none;
+    padding: 15px 24px;
+    margin: 7px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.uploadBtn {
+    background: #d98ca4;
+    color: white;
+    box-shadow: 0 10px 30px rgba(217, 140, 164, 0.3);
+}
+
+.galleryBtn {
+    background: white;
+    color: #c87891;
+    border: 1px solid #edc4d0;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+.left-character,
+.right-character {
+    min-height: 620px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.32);
+}
+
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 22px 14px;
+    }
+
+    .left-character,
+    .right-character {
+        display: none;
+    }
+
+    .center {
+        width: 100%;
+        padding: 38px 18px;
+    }
+
+    .center h1 {
+        font-size: 60px;
+    }
+
+    button {
+        width: 100%;
+        margin: 7px 0;
+    }
+}

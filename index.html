@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Berfin & Emre</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <div class="hero">
+
+        <div class="left-character"></div>
+
+        <div class="center">
+
+            <h3>Hoş Geldiniz</h3>
+
+            <h1>
+                Berfin <span>&</span> Emre
+            </h1>
+
+            <p class="date">
+                26 Temmuz 2026
+            </p>
+
+            <p class="text">
+                En mutlu günümüzde bizimle olduğunuz için teşekkür ederiz.
+                Bugün çektiğiniz tüm fotoğrafları aşağıdan yükleyebilir
+                ve diğer misafirlerin yüklediği anıları inceleyebilirsiniz.
+            </p>
+
+            <input
+                type="file"
+                id="photoInput"
+                accept="image/*"
+                multiple
+                hidden
+            >
+
+            <button class="uploadBtn" id="selectPhotoBtn">
+                📷 Fotoğraf Yükle
+            </button>
+
+            <p id="selectedInfo"></p>
+            
+            <button class="galleryBtn">
+                🩷 Galeriyi Gör
+            </button>
+
+        </div>
+
+        <div class="right-character"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
