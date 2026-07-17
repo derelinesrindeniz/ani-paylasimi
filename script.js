@@ -70,7 +70,18 @@ selectPhotoBtn.addEventListener("click", function () {
 });
 
 photoInput.addEventListener("change", async function () {
-    const files = Array.from(photoInput.files);
+    if (!currentUser) {
+        currentUser = await ensureAnonymousUser();
+    }
+
+    if (!currentUser) {
+        selectedInfo.textContent =
+            "❌ Kullanıcı bağlantısı kurulamadı.";
+
+        photoInput.value = "";
+        return;
+    }
+        const files = Array.from(photoInput.files);
 
     if (files.length === 0) {
         selectedInfo.textContent = "";
