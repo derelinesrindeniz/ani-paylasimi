@@ -142,19 +142,23 @@ async function loadGallery() {
     galleryStatus.textContent = "";
 
     imageFiles.forEach(function (file) {
-        const { data } = supabaseClient
-            .storage
-            .from(BUCKET_NAME)
-            .getPublicUrl(file.name);
+
+    const { data } = supabaseClient
+        .storage
+        .from(BUCKET_NAME)
+        .getPublicUrl(file.name);
+
+    if (!data.publicUrl) {
+        return;
+    }
+
+    const image = new Image();
+
+    image.onload = function () {
 
         const item = document.createElement("button");
         item.className = "gallery-item";
         item.type = "button";
-
-        const image = document.createElement("img");
-        image.src = data.publicUrl;
-        image.alt = "Berfin ve Emre düğün hatırası";
-        image.loading = "lazy";
 
         item.appendChild(image);
 
@@ -163,7 +167,17 @@ async function loadGallery() {
         });
 
         gallery.appendChild(item);
-    });
-}
 
+    };
+
+    image.onerror = function () {
+        console.log("Bozuk dosya atlandı:", file.name);
+    };
+
+    image.src = data.publicUrl;
+    image.alt = "Berfin ve Emre düğün hatırası";
+    image.loading = "lazy";
+
+});
+}
 loadGallery();
