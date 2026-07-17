@@ -511,7 +511,7 @@ downloadPhotoBtn.addEventListener(
 
         downloadPhotoBtn.disabled = true;
         downloadPhotoBtn.textContent =
-            "İndiriliyor...";
+            "Hazırlanıyor...";
 
         try {
             const response =
@@ -519,39 +519,72 @@ downloadPhotoBtn.addEventListener(
 
             if (!response.ok) {
                 throw new Error(
-                    "Fotoğraf indirilemedi."
+                    "Fotoğraf alınamadı."
                 );
             }
 
             const imageBlob =
                 await response.blob();
 
-            const temporaryUrl =
-                URL.createObjectURL(imageBlob);
+            const extension =
+                imageBlob.type.split("/")[1] || "jpg";
 
-            const downloadLink =
-                document.createElement("a");
+            const fileName =
+                `berfin-emre-dugun-${Date.now()}.${extension}`;
 
-            downloadLink.href = temporaryUrl;
-            downloadLink.download =
-                `berfin-emre-dugun-${Date.now()}.jpg`;
-
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            downloadLink.remove();
-
-            URL.revokeObjectURL(temporaryUrl);
-        } catch (error) {
-            console.error("İndirme hatası:", error);
-
-            window.open(
-                currentPhoto.publicUrl,
-                "_blank"
+            const imageFile = new File(
+                [imageBlob],
+                fileName,
+                {
+                    type: imageBlob.type
+                }
             );
+
+            const canShareFile =
+                navigator.share &&
+                navigator.canShare &&
+                navigator.canShare({
+                    files: [imageFile]
+                });
+
+            if (canShareFile) {
+                await navigator.share({
+                    files: [imageFile],
+                    title: "Berfin & Emre Düğün Fotoğrafı"
+                });
+            } else {
+                const temporaryUrl =
+                    URL.createObjectURL(imageBlob);
+
+                const downloadLink =
+                    document.createElement("a");
+
+                downloadLink.href = temporaryUrl;
+                downloadLink.download = fileName;
+
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                downloadLink.remove();
+
+                setTimeout(function () {
+                    URL.revokeObjectURL(temporaryUrl);
+                }, 1000);
+            }
+        } catch (error) {
+            if (error.name !== "AbortError") {
+                console.error(
+                    "Fotoğraf kaydetme hatası:",
+                    error
+                );
+
+                alert(
+                    "Fotoğraf kaydedilemedi. Lütfen tekrar deneyin."
+                );
+            }
         } finally {
             downloadPhotoBtn.disabled = false;
             downloadPhotoBtn.textContent =
-                "⬇️ Fotoğrafı İndir";
+                "⬇️ Galeriye Kaydet";
         }
     }
 );
