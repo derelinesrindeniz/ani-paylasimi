@@ -218,15 +218,20 @@ a.galleryBtn {
     display: inline-block;
     text-decoration: none;
 }
+body.lightbox-open {
+    overflow: hidden;
+}
+
 .lightbox {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
     z-index: 9999;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 70px 75px 95px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.92);
 }
 
 .lightbox.active {
@@ -234,19 +239,343 @@ a.galleryBtn {
 }
 
 .lightbox img {
-    max-width: 95%;
-    max-height: 90vh;
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 175px);
     object-fit: contain;
     border-radius: 12px;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .lightbox-close {
     position: absolute;
     top: 15px;
     right: 20px;
+    width: 48px;
+    height: 48px;
+    padding: 0;
     border: none;
     background: transparent;
     color: white;
-    font-size: 44px;
+    font-size: 46px;
+    line-height: 1;
     cursor: pointer;
+}
+
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    width: 52px;
+    height: 70px;
+    padding: 0;
+    border: none;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.16);
+    color: white;
+    font-size: 56px;
+    line-height: 1;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.lightbox-arrow:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.lightbox-arrow[hidden] {
+    display: none;
+}
+
+.lightbox-prev {
+    left: 14px;
+}
+
+.lightbox-next {
+    right: 14px;
+}
+
+.download-photo-btn {
+    position: absolute;
+    bottom: 23px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 13px 21px;
+    border: none;
+    border-radius: 999px;
+    background: white;
+    color: #222;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.download-photo-btn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+
+/*
+=================================
+ANI PANOSU
+=================================
+*/
+
+.memory-section {
+    width: min(1100px, calc(100% - 32px));
+    margin: 70px auto;
+    padding: 45px;
+    box-sizing: border-box;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 18px 50px rgba(96, 51, 64, 0.12);
+}
+
+.memory-heading {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.memory-small-title {
+    margin: 0 0 5px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.memory-heading h2 {
+    margin: 0 0 10px;
+    font-size: clamp(30px, 5vw, 46px);
+}
+
+.memory-heading > p:last-child {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.memory-form {
+    max-width: 680px;
+    margin: 0 auto 50px;
+    padding: 25px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.memory-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.memory-form input,
+.memory-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid rgba(50, 30, 35, 0.18);
+    border-radius: 12px;
+    background: white;
+    font: inherit;
+    outline: none;
+}
+
+.memory-form input {
+    margin-bottom: 20px;
+}
+
+.memory-form textarea {
+    resize: vertical;
+    min-height: 145px;
+}
+
+.memory-form input:focus,
+.memory-form textarea:focus {
+    border-color: rgba(130, 70, 90, 0.65);
+    box-shadow: 0 0 0 3px rgba(130, 70, 90, 0.09);
+}
+
+.memory-textarea-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.memory-textarea-heading span {
+    margin-bottom: 8px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0.7;
+}
+
+.memory-textarea-heading span.limit-exceeded {
+    color: #b42318;
+    font-weight: 700;
+    opacity: 1;
+}
+
+.memory-submit-btn {
+    width: 100%;
+    margin-top: 17px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.memory-submit-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.memory-form-status {
+    min-height: 22px;
+    margin: 13px 0 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.memory-form-status.success {
+    color: #31724a;
+}
+
+.memory-form-status.error {
+    color: #b42318;
+}
+
+.memory-board-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.memory-board-heading h3 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.memory-board-heading span {
+    opacity: 0.65;
+}
+
+.memory-board-status {
+    text-align: center;
+}
+
+.memory-board {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+.memory-card {
+    position: relative;
+    min-height: 185px;
+    padding: 25px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 10px 28px rgba(62, 38, 44, 0.08);
+}
+
+.memory-quote {
+    position: absolute;
+    top: -15px;
+    right: 14px;
+    font-family: Georgia, serif;
+    font-size: 100px;
+    line-height: 1;
+    opacity: 0.08;
+}
+
+.memory-card-text {
+    position: relative;
+    margin: 0 0 25px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.memory-card-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 13px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.memory-card-footer strong {
+    overflow-wrap: anywhere;
+}
+
+.memory-card-footer time {
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0.6;
+}
+
+@media (max-width: 700px) {
+    .lightbox {
+        padding: 65px 10px 95px;
+    }
+
+    .lightbox img {
+        max-height: calc(100vh - 170px);
+    }
+
+    .lightbox-arrow {
+        top: auto;
+        bottom: 20px;
+        width: 46px;
+        height: 46px;
+        font-size: 40px;
+        transform: none;
+    }
+
+    .lightbox-prev {
+        left: 14px;
+    }
+
+    .lightbox-next {
+        right: 14px;
+    }
+
+    .download-photo-btn {
+        bottom: 21px;
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+
+    .memory-section {
+        width: min(100% - 20px, 1100px);
+        margin: 45px auto;
+        padding: 28px 15px;
+        border-radius: 22px;
+    }
+
+    .memory-form {
+        padding: 18px;
+    }
+
+    .memory-textarea-heading {
+        align-items: flex-start;
+    }
+
+    .memory-board {
+        grid-template-columns: 1fr;
+    }
+
+    .memory-card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
 }
