@@ -3,10 +3,13 @@ const photoInput = document.getElementById("photoInput");
 const selectedInfo = document.getElementById("selectedInfo");
 const gallery = document.getElementById("gallery");
 const galleryStatus = document.getElementById("galleryStatus");
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.getElementById("lightboxClose");
 
 
 const BUCKET_NAME = "dugun";
-const MAX_FILES_PER_SELECTION = 5;
+const MAX_FILES_PER_SELECTION = 10;
 const MAX_FILE_SIZE = 6 * 1024 * 1024;
 
 selectPhotoBtn.addEventListener("click", function () {
@@ -23,7 +26,7 @@ photoInput.addEventListener("change", async function () {
 
     if (files.length > MAX_FILES_PER_SELECTION) {
         selectedInfo.textContent =
-            "❌ Tek seferde en fazla 5 fotoğraf seçebilirsin.";
+            "❌ Tek seferde en fazla 10 fotoğraf seçebilirsin.";
 
         photoInput.value = "";
         return;
@@ -163,7 +166,8 @@ async function loadGallery() {
         item.appendChild(image);
 
         item.addEventListener("click", function () {
-            window.open(data.publicUrl, "_blank");
+            lightboxImage.src = data.publicUrl;
+            lightbox.classList.add("active");
         });
 
         gallery.appendChild(item);
@@ -180,4 +184,15 @@ async function loadGallery() {
 
 });
 }
+lightboxClose.addEventListener("click", function () {
+    lightbox.classList.remove("active");
+    lightboxImage.src = "";
+});
+
+lightbox.addEventListener("click", function (event) {
+    if (event.target === lightbox) {
+        lightbox.classList.remove("active");
+        lightboxImage.src = "";
+    }
+});
 loadGallery();
