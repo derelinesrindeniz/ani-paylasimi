@@ -137,7 +137,7 @@ photoInput.addEventListener("change", async function () {
             Math.random().toString(36).slice(2, 10);
 
         const fileName =
-            `${Date.now()}-${randomPart}.${extension}`;
+            `${currentUser.id}--${Date.now()}-${randomPart}.${extension}`;
 
         const { error } = await supabaseClient
             .storage
@@ -239,10 +239,14 @@ async function loadGallery() {
                 return null;
             }
 
+            const ownerId = file.name.includes("--")
+                ? file.name.split("--")[0]
+                : null;
+
             return {
                 fileName: file.name,
                 publicUrl: data.publicUrl,
-                ownerId: file.owner_id
+                ownerId: ownerId
             };
         })
     );
