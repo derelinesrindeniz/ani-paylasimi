@@ -32,10 +32,31 @@ const BUCKET_NAME = "dugun";
 const MAX_FILES_PER_SELECTION = 10;
 const MAX_FILE_SIZE = 6 * 1024 * 1024;
 const MAX_MEMORY_WORDS = 200;
+async function ensureAnonymousUser() {
+    const {
+        data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if (session) {
+        return session.user;
+    }
+
+    const { data, error } =
+        await supabaseClient.auth.signInAnonymously();
+
+    if (error) {
+        console.error(error);
+        alert("Anonim giriş yapılamadı.");
+        return null;
+    }
+
+    return data.user;
+}
 
 let galleryPhotos = [];
 let currentPhotoIndex = 0;
 let touchStartX = 0;
+let currentUser = null;
 
 
 /*
@@ -209,7 +230,8 @@ async function loadGallery() {
 
             return {
                 fileName: file.name,
-                publicUrl: data.publicUrl
+                publicUrl: data.publicUrl,
+                ownerId: file.owner_id
             };
         })
     );
@@ -236,6 +258,63 @@ async function loadGallery() {
         item.addEventListener("click", function () {
             openLightbox(index);
         });
+
+        if (
+            currentUser &&
+            photo.ownerId === currentUser.id
+        ) {
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.type = "button";
+            deleteButton.className =
+                "gallery-delete-btn";
+
+            deleteButton.textContent = "🗑️";
+
+            deleteButton.setAttribute(
+                "aria-label",
+                "Fotoğrafı sil"
+            );
+
+            deleteButton.addEventListener(
+                "click",
+                async function (event) {
+                    event.stopPropagation();
+
+                    const confirmed = confirm(
+                        "Bu fotoğrafı silmek istediğine emin misin?"
+                    );
+
+                    if (!confirmed) {
+                        return;
+                    }
+
+                    deleteButton.disabled = true;
+
+                    const { error } = await supabaseClient
+                        .storage
+                        .from(BUCKET_NAME)
+                        .remove([photo.fileName]);
+
+                    if (error) {
+                        console.error(
+                            "Fotoğraf silme hatası:",
+                            error
+                        );
+
+                        alert("Fotoğraf silinemedi.");
+                        deleteButton.disabled = false;
+                        return;
+                    }
+
+                    closeLightbox();
+                    await loadGallery();
+                }
+            );
+
+            item.appendChild(deleteButton);
+        }
 
         gallery.appendChild(item);
     });
@@ -554,7 +633,8 @@ memoryForm.addEventListener(
             .from("anilar")
             .insert({
                 isim: name,
-                ani: memory
+                ani: memory,
+                user_id: currentUser.id
             });
 
         if (error) {
@@ -603,7 +683,7 @@ async function loadMemories() {
     const { data: memories, error } =
         await supabaseClient
             .from("anilar")
-            .select("id, isim, ani, created_at")
+            .select("id, isim, ani, created_at, user_id")
             .order("created_at", {
                 ascending: false
             });
@@ -673,6 +753,58 @@ async function loadMemories() {
         card.appendChild(text);
         card.appendChild(footer);
 
+        if (
+            currentUser &&
+            memory.user_id === currentUser.id
+        ) {
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.type = "button";
+            deleteButton.className = "memory-delete-btn";
+            deleteButton.textContent = "🗑️ Yazımı Sil";
+
+            deleteButton.addEventListener(
+                "click",
+                async function () {
+                    const confirmed = confirm(
+                        "Bu anıyı silmek istediğine emin misin?"
+                    );
+
+                    if (!confirmed) {
+                        return;
+                    }
+
+                    deleteButton.disabled = true;
+                    deleteButton.textContent = "Siliniyor...";
+
+                    const { error } = await supabaseClient
+                        .from("anilar")
+                        .delete()
+                        .eq("id", memory.id);
+
+                    if (error) {
+                        console.error(
+                            "Anı silme hatası:",
+                            error
+                        );
+
+                        alert("Anı silinemedi.");
+
+                        deleteButton.disabled = false;
+                        deleteButton.textContent =
+                            "🗑️ Yazımı Sil";
+
+                        return;
+                    }
+
+                    await loadMemories();
+                }
+            );
+
+            card.appendChild(deleteButton);
+        }
+
         memoryBoard.appendChild(card);
     });
 }
@@ -695,5 +827,14 @@ SAYFA AÇILINCA
 =================================
 */
 
-loadGallery();
-loadMemories();
+(async function () {
+    currentUser = await ensureAnonymousUser();
+
+    if (!currentUser) {
+        alert("Kullanıcı bağlantısı kurulamadı.");
+        return;
+    }
+
+    await loadGallery();
+    await loadMemories();
+})();
