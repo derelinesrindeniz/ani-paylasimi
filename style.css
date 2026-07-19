@@ -7,30 +7,41 @@
 body {
     min-height: 100vh;
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #fffdfd, #fff3f7);
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.55)),
+        url("images/hero-background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     color: #7c5b65;
     overflow-x: hidden;
 }
-
 .hero {
     min-height: 100vh;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr 1fr;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 40px;
+    padding: 60px 25px;
+    position: relative;
 }
 
 .center {
     text-align: center;
     max-width: 650px;
     margin: auto;
+    margin-top: 60px;
     padding: 40px 25px;
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid #f4d4de;
-    border-radius: 32px;
-    box-shadow: 0 20px 60px rgba(210, 144, 164, 0.18);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    position: relative;
+    z-index: 5;
 }
 
 .center h3 {
@@ -102,13 +113,10 @@ button:hover {
     transform: translateY(-3px);
 }
 
-.left-character,
-.right-character {
-    min-height: 620px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.32);
-}
-
+    .left-character,
+    .right-character {
+        display: none;
+    }
 @media (max-width: 900px) {
     .hero {
         grid-template-columns: 1fr;
