@@ -162,32 +162,50 @@ button:hover {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns:
+        repeat(auto-fit, minmax(210px, 1fr));
+    gap: 26px;
+    align-items: start;
 }
 
 .gallery-item {
+    position: relative;
     width: 100%;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
-    aspect-ratio: 1 / 1;
+    padding: 12px 12px 42px;
+    overflow: visible;
+    aspect-ratio: auto;
     border: none;
-    border-radius: 16px;
-    background: #f8e8ed;
+    border-radius: 4px;
+    background: #fffdfb;
+    box-shadow:
+        0 14px 28px rgba(80, 55, 60, 0.16),
+        inset 0 0 0 1px rgba(80, 55, 60, 0.06);
     cursor: pointer;
+    transform: rotate(-1.5deg);
+}
+.gallery-item:nth-child(even) {
+    transform: rotate(1.4deg);
 }
 
+.gallery-item:nth-child(3n) {
+    transform: rotate(-0.6deg);
+}
 .gallery-item img {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 1 / 1;
     display: block;
     object-fit: cover;
+    border-radius: 2px;
     transition: transform 0.25s ease;
 }
 
+.gallery-item:hover {
+    transform: rotate(0deg) translateY(-5px);
+}
+
 .gallery-item:hover img {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 .uploadBtn:disabled {
@@ -203,7 +221,7 @@ button:hover {
 
     .gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
+        gap: 18px;
     }
 
     .gallery-section h2 {
@@ -333,11 +351,13 @@ ANI PANOSU
     box-shadow: 0 18px 50px rgba(96, 51, 64, 0.12);
 }
 
-.memory-heading {
-    margin-bottom: 28px;
-    text-align: center;
+.memory-heading h2 {
+    margin: 0 0 10px;
+    font-family: "Great Vibes", cursive;
+    font-size: 58px;
+    font-weight: 400;
+    color: #d9829d;
 }
-
 .memory-small-title {
     margin: 0 0 5px;
     font-size: 14px;
@@ -345,14 +365,12 @@ ANI PANOSU
     text-transform: uppercase;
 }
 
-.memory-heading h2 {
-    margin: 0 0 10px;
-    font-size: clamp(30px, 5vw, 46px);
-}
 
 .memory-heading > p:last-child {
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.8;
+    color: #80646c;
+    font-size: 16px;
 }
 
 .memory-form {
@@ -471,20 +489,58 @@ ANI PANOSU
 .memory-board {
     display: grid;
     grid-template-columns:
-        repeat(auto-fit, minmax(250px, 1fr));
-    gap: 18px;
+        repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
+    align-items: start;
 }
 
 .memory-card {
     position: relative;
-    min-height: 185px;
-    padding: 25px;
-    overflow: hidden;
-    border-radius: 18px;
-    background: white;
-    box-shadow: 0 10px 28px rgba(62, 38, 44, 0.08);
+    min-height: 220px;
+    padding: 34px 24px 24px;
+    overflow: visible;
+    border-radius: 4px;
+    background: #fff9c9;
+    box-shadow:
+        0 14px 24px rgba(90, 65, 50, 0.14),
+        inset 0 0 0 1px rgba(120, 90, 60, 0.05);
+    transform: rotate(-1.5deg);
+}
+.memory-card:nth-child(even) {
+    transform: rotate(1.5deg);
+    background: #fff1c9;
 }
 
+.memory-card:nth-child(3n) {
+    transform: rotate(-0.7deg);
+    background: #f9f2d0;
+}
+.memory-card::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #d9829d;
+    box-shadow:
+        0 3px 5px rgba(70, 35, 45, 0.25),
+        inset 0 2px 3px rgba(255, 255, 255, 0.45);
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.memory-card::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    width: 2px;
+    height: 13px;
+    background: rgba(90, 60, 65, 0.28);
+    transform: translateX(-50%);
+}
 .memory-quote {
     position: absolute;
     top: -15px;
@@ -497,10 +553,13 @@ ANI PANOSU
 
 .memory-card-text {
     position: relative;
-    margin: 0 0 25px;
-    line-height: 1.7;
+    margin: 0 0 28px;
+    line-height: 1.55;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
+    font-family: "Caveat", cursive;
+    font-size: 28px;
+    color: #6f525a;
 }
 
 .memory-card-footer {
@@ -509,9 +568,10 @@ ANI PANOSU
     justify-content: space-between;
     gap: 12px;
     margin-top: auto;
-    padding-top: 13px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 14px;
+    border-top: 1px dashed rgba(120, 85, 75, 0.25);
 }
+
 
 .memory-card-footer strong {
     overflow-wrap: anywhere;
@@ -621,4 +681,48 @@ ANI PANOSU
 .memory-delete-btn:disabled {
     opacity: 0.55;
     cursor: wait;
+}
+.welcome-message {
+    max-width: 560px;
+    margin: 0 auto 22px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #7c5b65;
+}
+
+.welcome-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.welcome-link {
+    display: inline-block;
+    padding: 12px 18px;
+    border: 1px solid #edc4d0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #c87891;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+.welcome-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(200, 120, 145, 0.15);
+}
+
+@media (max-width: 700px) {
+    .welcome-links {
+        flex-direction: column;
+    }
+
+    .welcome-link {
+        width: 100%;
+        text-align: center;
+    }
 }
