@@ -7,18 +7,74 @@
 body {
     min-height: 100vh;
     font-family: "Poppins", sans-serif;
+    background: #fff8fa;
+    color: #7c5b65;
+    overflow-x: hidden;
+}
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
 
-    background-image:
-        linear-gradient(rgba(255,255,255,.55), rgba(255,255,255,.55)),
-        url("images/hero-background.png");
-
+    background-image: url("images/hero-background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+}
 
-    color: #7c5b65;
-    overflow-x: hidden;
+.hero-hotspot {
+    position: absolute;
+    z-index: 10;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: transparent !important;
+    box-shadow: none !important;
+    cursor: pointer;
+}
+
+.hero-hotspot:hover {
+    transform: none;
+    background: transparent !important;
+}
+
+.hero-photo-hotspot {
+    left: 33.5%;
+    top: 63.8%;
+    width: 15.8%;
+    height: 5.8%;
+}
+
+.hero-memory-hotspot {
+    left: 50.8%;
+    top: 63.8%;
+    width: 16%;
+    height: 5.8%;
+}
+
+.hero-scroll {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 73.4%;
+    width: 45px;
+    height: 45px;
+    transform: translateX(-50%);
+}
+
+.hero-upload-status {
+    position: absolute;
+    z-index: 12;
+    left: 50%;
+    top: 70%;
+    width: min(520px, 80%);
+    margin: 0;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #a96375;
 }
 .hero {
     min-height: 100vh;
@@ -30,60 +86,7 @@ body {
     position: relative;
 }
 
-.center {
-    text-align: center;
-    max-width: 650px;
-    margin: auto;
-    margin-top: 60px;
-    padding: 40px 25px;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    position: relative;
-    z-index: 5;
-}
 
-.center h3 {
-    font-size: 18px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    color: #d28fa2;
-    margin-bottom: 20px;
-}
-
-.center h1 {
-    font-family: "Great Vibes", cursive;
-    font-size: 78px;
-    font-weight: 400;
-    line-height: 1;
-    color: #d9829d;
-    margin-bottom: 20px;
-}
-
-.center h1 span {
-    font-size: 48px;
-    color: #e9a9ba;
-}
-
-.date {
-    display: inline-block;
-    padding: 10px 22px;
-    border-top: 1px solid #e7b2c1;
-    border-bottom: 1px solid #e7b2c1;
-    color: #bd7489;
-    font-size: 16px;
-    letter-spacing: 2px;
-    margin-bottom: 26px;
-}
-
-.text {
-    font-size: 15px;
-    line-height: 1.8;
-    margin: 0 auto 28px;
-    max-width: 520px;
-    color: #80646c;
-}
 
 button {
     border: none;
@@ -97,44 +100,20 @@ button {
     transition: 0.25s ease;
 }
 
-.uploadBtn {
-    background: #d98ca4;
-    color: white;
-    box-shadow: 0 10px 30px rgba(217, 140, 164, 0.3);
-}
 
-.galleryBtn {
-    background: white;
-    color: #c87891;
-    border: 1px solid #edc4d0;
-}
+
+
 
 button:hover {
     transform: translateY(-3px);
 }
 
-    .left-character,
-    .right-character {
-        display: none;
-    }
+
+    
 @media (max-width: 900px) {
     .hero {
         grid-template-columns: 1fr;
         padding: 22px 14px;
-    }
-
-    .left-character,
-    .right-character {
-        display: none;
-    }
-
-    .center {
-        width: 100%;
-        padding: 38px 18px;
-    }
-
-    .center h1 {
-        font-size: 60px;
     }
 
     button {
@@ -690,34 +669,9 @@ ANI PANOSU
     opacity: 0.55;
     cursor: wait;
 }
-.welcome-message {
-    max-width: 560px;
-    margin: 0 auto 22px;
-    font-size: 16px;
-    line-height: 1.9;
-    color: #7c5b65;
-}
 
-.welcome-links {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 18px;
-}
 
-.welcome-link {
-    display: inline-block;
-    padding: 12px 18px;
-    border: 1px solid #edc4d0;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.92);
-    color: #c87891;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: 0.25s ease;
-}
+
 
 .welcome-link:hover {
     transform: translateY(-2px);
@@ -725,12 +679,38 @@ ANI PANOSU
 }
 
 @media (max-width: 700px) {
-    .welcome-links {
-        flex-direction: column;
+    
+
+    
+}
+
+@media (max-width: 700px) {
+    .hero {
+        min-height: 100svh;
+        background-size: auto 100%;
+        background-position: center top;
     }
 
-    .welcome-link {
-        width: 100%;
-        text-align: center;
+    .hero-photo-hotspot {
+        left: 33%;
+        top: 64%;
+        width: 17%;
+        height: 6%;
+    }
+
+    .hero-memory-hotspot {
+        left: 50%;
+        top: 64%;
+        width: 17%;
+        height: 6%;
+    }
+
+    .hero-scroll {
+        top: 73%;
+    }
+
+    .hero-upload-status {
+        top: 71%;
+        font-size: 12px;
     }
 }
