@@ -16,59 +16,38 @@
 
 <body>
 
-    <div class="hero">
+    <section class="hero">
 
-        <div class="left-character"></div>
+        <input
+            type="file"
+            id="photoInput"
+            accept="image/*"
+            multiple
+            hidden
+        >
 
-        <div class="center">
+        <button
+            class="hero-hotspot hero-photo-hotspot"
+            id="selectPhotoBtn"
+            type="button"
+            aria-label="Fotoğraf yükle"
+        ></button>
 
-            <h3>Hoş Geldiniz</h3>
+        <a
+            href="#memorySection"
+            class="hero-hotspot hero-memory-hotspot"
+            aria-label="Anı panosuna git"
+        ></a>
 
-            <h1>
-                Berfin <span>&</span> Emre
-            </h1>
+        <a
+            href="#gallerySection"
+            class="hero-scroll"
+            aria-label="Fotoğraf galerisine git"
+        ></a>
 
-            <p class="date">
-                26 Temmuz 2026
-            </p>
+        <p id="selectedInfo" class="hero-upload-status"></p>
 
-            <p class="text welcome-message">
-    Bugünden geriye bize en çok fotoğraflar ve güzel anılar kalacak. 💗
-    Sen de bu özel güne ait karelerini bizimle paylaşabilir,
-    istersen Anı Panosu’na içinden geçen birkaç güzel cümleyi bırakabilirsin.
-</p>
-
-<div class="welcome-links">
-    <a href="#gallerySection" class="welcome-link">
-        📷 Fotoğraflara Git
-    </a>
-
-    <a href="#memorySection" class="welcome-link">
-        💌 Anı Panosuna Git
-    </a>
-</div>
-
-            <input
-                type="file"
-                id="photoInput"
-                accept="image/*"
-                multiple
-                hidden
-            >
-
-            <button class="uploadBtn" id="selectPhotoBtn">
-                📷 Fotoğraf Yükle
-            </button>
-
-            <p id="selectedInfo"></p>
-
-            
-
-        </div>
-
-        <div class="right-character"></div>
-
-    </div>
+    </section>
 
     <section class="gallery-section" id="gallerySection">
         <h2>Düğün Anılarımız</h2>
