@@ -11,72 +11,101 @@ body {
     color: #7c5b65;
     overflow-x: hidden;
 }
-.hero {
+.hero{
     position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding: 0;
+    width:100%;
+    min-height:100vh;
 
-    background-image: url("images/hero-background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image:url("images/hero-desktop.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
-.hero-hotspot {
+.hero-actions {
     position: absolute;
-    z-index: 10;
-    display: block;
+    z-index: 20;
+    left: 50%;
+    top: 72%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    width: min(620px, 80%);
+}
+
+.hero-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    min-height: 56px;
+    padding: 14px 24px;
     margin: 0;
-    padding: 0;
-    border: none;
     border-radius: 999px;
-    background: transparent !important;
-    box-shadow: none !important;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
     cursor: pointer;
+    transition: .25s;
 }
 
-.hero-hotspot:hover {
-    transform: none;
-    background: transparent !important;
+.hero-action-primary{
+    background:#df8d9a;
+    color:white;
+    border:none;
 }
 
-.hero-photo-hotspot {
-    left: 33.5%;
-    top: 63.8%;
-    width: 15.8%;
-    height: 5.8%;
+.hero-action-secondary{
+    background:white;
+    color:#d87586;
+    border:1px solid #e69aa7;
 }
 
-.hero-memory-hotspot {
-    left: 50.8%;
-    top: 63.8%;
-    width: 16%;
-    height: 5.8%;
+.hero-action:hover{
+    transform:translateY(-3px);
 }
 
 .hero-scroll {
     position: absolute;
-    z-index: 10;
+    z-index: 20;
     left: 50%;
-    top: 73.4%;
-    width: 45px;
-    height: 45px;
+    top: 82%;
     transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.92);
+    color: #8e6a72;
+    text-decoration: none;
+    font-size: 23px;
+
+    box-shadow: 0 5px 16px rgba(70, 45, 55, 0.12);
 }
 
 .hero-upload-status {
     position: absolute;
-    z-index: 12;
+    z-index: 22;
     left: 50%;
-    top: 70%;
+    top: 79%;
     width: min(520px, 80%);
     margin: 0;
+
     transform: translateX(-50%);
     text-align: center;
-    color: #a96375;
-}
 
+    color: #a96375;
+    font-size: 14px;
+    font-weight: 600;
+}
+    
 
 
 
@@ -683,19 +712,7 @@ ANI PANOSU
         background-position: center top;
     }
 
-    .hero-photo-hotspot {
-        left: 33%;
-        top: 64%;
-        width: 17%;
-        height: 6%;
-    }
-
-    .hero-memory-hotspot {
-        left: 50%;
-        top: 64%;
-        width: 17%;
-        height: 6%;
-    }
+    
 
     .hero-scroll {
         top: 73%;
@@ -705,4 +722,40 @@ ANI PANOSU
         top: 71%;
         font-size: 12px;
     }
+}
+@media (max-width: 700px) {
+    .hero-actions {
+        top: 69%;
+        width: 78%;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .hero-action {
+        width: 100%;
+        min-width: 0;
+        min-height: 48px;
+        font-size: 13px;
+    }
+
+    .hero-scroll {
+        top: 84%;
+    }
+
+    .hero-upload-status {
+        top: 81%;
+        font-size: 12px;
+    }
+}
+@media (max-width:700px){
+
+    .hero{
+
+        background-image:url("images/hero-mobile.png");
+        background-size:cover;
+        background-position:center;
+        min-height:100svh;
+
+    }
+
 }
