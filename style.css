@@ -725,17 +725,17 @@ ANI PANOSU
 }
 @media (max-width: 700px) {
     .hero-actions {
-        top: 73%;
-        width: 78%;
-        gap: 10px;
+        top: 71%;
+        width: 62%;
+        gap: 8px;
         flex-direction: column;
     }
 
     .hero-action {
         width: 100%;
         min-width: 0;
-        min-height: 46px;
-        font-size: 13px;
+        min-height: 42px;
+        font-size: 12px;
     }
 
     .hero-scroll {
