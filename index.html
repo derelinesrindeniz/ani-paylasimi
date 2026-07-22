@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Berfin & Emre</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&family=Caveat:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <input
+            type="file"
+            id="photoInput"
+            accept="image/*"
+            multiple
+            hidden
+        >
+
+        <div class="hero-actions">
+        <button
+            class="hero-action hero-action-primary"
+            id="selectPhotoBtn"
+            type="button"
+        >
+            📷 Fotoğraf Yükle
+        </button>
+
+        <a
+            href="#memorySection"
+            class="hero-action hero-action-secondary"
+        >
+            💌 Anı Panosuna Git
+        </a>
+    </div>
+
+    <a
+        href="#gallerySection"
+        class="hero-scroll"
+        aria-label="Fotoğraf galerisine git"
+    >
+        ↓
+    </a>
+
+        <p id="selectedInfo" class="hero-upload-status"></p>
+
+    </section>
+
+    <section class="gallery-section" id="gallerySection">
+        <h2>Düğün Anılarımız</h2>
+
+        <p id="galleryStatus">
+            Fotoğraflar yükleniyor...
+        </p>
+
+        <div id="gallery" class="gallery"></div>
+    </section>
+
+
+<section class="memory-section" id="memorySection">
+    <div class="memory-heading">
+        <p class="memory-small-title">Berfin & Emre</p>
+        <h2>Anı Panosu</h2>
+        <p>
+            Bu güzel güne dair bir anınızı veya dileğinizi bırakın.
+        </p>
+    </div>
+
+    <form class="memory-form" id="memoryForm">
+        <label for="memoryName">Adınız</label>
+
+        <input
+            type="text"
+            id="memoryName"
+            maxlength="40"
+            placeholder="Adınızı yazın"
+            autocomplete="name"
+            required
+        >
+
+        <div class="memory-textarea-heading">
+            <label for="memoryText">Anınız veya dileğiniz</label>
+
+            <span id="memoryWordCount">
+                0 / 200 kelime
+            </span>
+        </div>
+
+        <textarea
+            id="memoryText"
+            rows="6"
+            placeholder="Berfin ve Emre için bir anı veya güzel bir dilek yazın..."
+            required
+        ></textarea>
+
+        <button
+            class="memory-submit-btn"
+            id="memorySubmitBtn"
+            type="submit"
+        >
+            💌 Anıyı Panoya Bırak
+        </button>
+
+        <p
+            class="memory-form-status"
+            id="memoryFormStatus"
+            aria-live="polite"
+        ></p>
+    </form>
+
+    <div class="memory-board-heading">
+        <h3>Bırakılan Anılar</h3>
+        <span id="memoryCount"></span>
+    </div>
+
+    <p class="memory-board-status" id="memoryBoardStatus">
+        Anılar yükleniyor...
+    </p>
+
+    <div class="memory-board" id="memoryBoard"></div>
+</section>
+<div class="lightbox" id="lightbox">
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        type="button"
+        aria-label="Fotoğrafı kapat"
+    >
+        ×
+    </button>
+
+    <button
+        class="lightbox-arrow lightbox-prev"
+        id="lightboxPrev"
+        type="button"
+        aria-label="Önceki fotoğraf"
+    >
+        ‹
+    </button>
+
+    <img
+        id="lightboxImage"
+        src=""
+        alt="Büyük düğün fotoğrafı"
+    >
+
+    <button
+        class="lightbox-arrow lightbox-next"
+        id="lightboxNext"
+        type="button"
+        aria-label="Sonraki fotoğraf"
+    >
+        ›
+    </button>
+
+    <button
+        class="download-photo-btn"
+        id="downloadPhotoBtn"
+        type="button"
+    >
+        ⬇️ Fotoğrafı İndir
+    </button>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
