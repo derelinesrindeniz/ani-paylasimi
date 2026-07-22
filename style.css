@@ -726,19 +726,19 @@ ANI PANOSU
 @media (max-width:700px) {
 
     .hero-actions {
-        top: 67%;
+        top: 64%;
         left: 50%;
         transform: translateX(-50%);
-        width: 64%;
-        gap: 8px;
+        width: 58%;
+        gap: 10px;
         flex-direction: column;
     }
 
     .hero-action {
         width: 100%;
         min-width: 0;
-        min-height: 42px;
-        padding: 10px 18px;
+        min-height: 44px;
+        padding: 10px 15px;
         font-size: 12px;
     }
 
