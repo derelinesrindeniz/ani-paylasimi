@@ -723,10 +723,13 @@ ANI PANOSU
         font-size: 12px;
     }
 }
-@media (max-width: 700px) {
+@media (max-width:700px) {
+
     .hero-actions {
-        top: 71%;
-        width: 62%;
+        top: 67%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 64%;
         gap: 8px;
         flex-direction: column;
     }
@@ -735,17 +738,19 @@ ANI PANOSU
         width: 100%;
         min-width: 0;
         min-height: 42px;
+        padding: 10px 18px;
         font-size: 12px;
     }
 
     .hero-scroll {
-        top: 89%;
+        top: 80%;
     }
 
     .hero-upload-status {
-        top: 81%;
+        top: 77%;
         font-size: 12px;
     }
+
 }
 @media (max-width:700px){
 
