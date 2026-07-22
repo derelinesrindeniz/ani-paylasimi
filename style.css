@@ -729,7 +729,7 @@ ANI PANOSU
         top: 64%;
         left: 50%;
         transform: translateX(-50%);
-        width: 58%;
+        width: 50%;
         gap: 10px;
         flex-direction: column;
     }
