@@ -727,9 +727,9 @@ ANI PANOSU
 
     .hero-actions {
         top: 64%;
-        left: 50%;
+        left: 52%;
         transform: translateX(-50%);
-        width: 50%;
+        width: 47%;
         gap: 10px;
         flex-direction: column;
     }
