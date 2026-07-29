@@ -36,4 +36,4 @@ https://berfin-emre-dugun.vercel.app/
 
 ## About
 
-This project was built to gain practical experience in frontend development, backend integration, authentication, file storage, and deployment while creating a solution for a real-world use case.
+This project was built to gain practical experience in frontend development, backend integration, authentication, file storage, and deployment while creating a solution for a real-world use case. 
