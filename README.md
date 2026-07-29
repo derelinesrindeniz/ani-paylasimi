@@ -8,11 +8,11 @@
 
 This project is a web application developed for a real wedding event.
 
-Guests can access the application by scanning a QR code, upload the photos they take during the event, and leave memory notes for the couple. The goal is to collect all photos and messages in one place and create a digital memory album.
+Guests can access the application by scanning a QR code, upload the photos they take during the event, and leave memory notes for the couple. The goal is to collect photos and messages in one place and create a digital memory album.
 
 ## Features
 
-- Photo upload
+- Upload multiple photos
 - Wedding photo gallery
 - Full-screen photo viewer
 - Photo download
@@ -27,23 +27,13 @@ Guests can access the application by scanning a QR code, upload the photos they 
 - CSS
 - JavaScript
 - Supabase
-- GitHub
+- Git & GitHub
 - Vercel
 
 ## Live Demo
 
 https://berfin-emre-dugun.vercel.app/
 
-## Screenshots
-
-### Desktop
-
-_Add screenshot here_
-
-### Mobile
-
-_Add screenshot here_
-
 ## About
 
-This project was developed as a personal project to gain hands-on experience with frontend development, backend integration, file storage, authentication, and deployment while building a solution for a real-world use case.
+This project was built to gain practical experience in frontend development, backend integration, authentication, file storage, and deployment while creating a solution for a real-world use case.
