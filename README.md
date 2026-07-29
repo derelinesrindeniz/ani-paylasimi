@@ -18,7 +18,7 @@ Guests can access the application by scanning a QR code, upload the photos they 
 - Photo download
 - Memory board
 - Anonymous authentication
-- Delete your own photos and memories
+- Delete your own photos and memories  
 - Responsive design
 
 ## Technologies
